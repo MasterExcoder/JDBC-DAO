@@ -32,12 +32,14 @@ public class Main {
 			DSLContext create = DSL.using(conn, SQLDialect.MYSQL);
 			
 			//Simple DSL Query: Selecting all columns form table ARTIST
+			//Also LINQ in C# war mir da deutlich sympathischer...Was soll diese Syntax??!
 			Result<Record> result = create.select().from(Tables.ARTIST).fetch();
 			for (Record r : result) {
 			    Integer artistid = r.getValue(ARTIST.ARTISTID);
 			    String name = r.getValue(ARTIST.NAME);
 
 			    System.out.println("ARTISTID: " + artistid + "\n" + "NAME: " + name);
+			    System.out.println("------------------------------");
 			}
 			
 			
