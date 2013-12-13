@@ -33,11 +33,17 @@ public class Main {
 			
 			//Simple DSL Query: Selecting all columns form table ARTIST
 			//Also LINQ in C# war mir da deutlich sympathischer...Was soll diese Syntax??!
-			Result<Record> result = create.select().from(Tables.ARTIST).fetch();
+			Result<Record> result = 
+					create.
+					select().
+					from(Tables.ARTIST).
+					where(ARTIST.NAME.equal("AC/DC")).
+					fetch();
 			for (Record r : result) {
 			    Integer artistid = r.getValue(ARTIST.ARTISTID);
 			    String name = r.getValue(ARTIST.NAME);
 
+			    System.out.println("------------------------------");
 			    System.out.println("ARTISTID: " + artistid + "\n" + "NAME: " + name);
 			    System.out.println("------------------------------");
 			}
